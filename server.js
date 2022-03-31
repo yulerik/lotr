@@ -14,8 +14,6 @@ mongoose.connect(uri,() => console.log('mongoDB connected'))
 // routes
 app.use('/auth', require('./routes/authRouter.js'))
 app.use('/lotr', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] })) // req.user
-
-
 // error handling
 app.use((err, req, res, next) => {
     console.log(err)
@@ -24,7 +22,7 @@ app.use((err, req, res, next) => {
     }
     return res.send({ errMsg: err.message })
 })
-
+// connection
 app.listen(port, () => {
     console.log(`server on ${port}`)
 })
